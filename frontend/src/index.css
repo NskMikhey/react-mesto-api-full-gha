@@ -1,0 +1,76 @@
+@import url(./vendor/normalize.css);
+@import url(./vendor/fonts/fonts.css);
+
+@import url(./blocks/page/page.css);
+@import url(./blocks/content/content.css);
+@import url(./blocks/page/__wrapper/page__wrapper.css);
+
+@import url(./blocks/header/header.css);
+@import url(./blocks/header/__logo/header__logo.css);
+@import url(./blocks/header/__nav/header__nav.css);
+@import url(./blocks/header/__nav-wrapper/header__nav-wrapper.css);
+@import url(./blocks/header/__button/header__button.css);
+@import url(./blocks/header/__button-logout/header__button-logout.css);
+@import url(./blocks/header/__email/header__email.css);
+@import url(./blocks/header/__link/header__link.css);
+@import url(./blocks/header/__menu/header__menu.css);
+@import url(./blocks/header/__menu/_open/header__menu_open.css);
+@import url(./blocks/header/__menu-burger/header__menu-burger.css);
+@import url(./blocks/header/__menu-burger/_active/header__menu-burger_active.css);
+
+@import url(./blocks/profile/profile.css);
+@import url(./blocks/profile/__avatar/profile__avatar.css);
+@import url(./blocks/profile/__edit-avatar-button/profile__edit-avatar-button.css);
+@import url(./blocks/profile/__info/profile__info.css);
+@import url(./blocks/profile/__name/profile__name.css);
+@import url(./blocks/profile/__edit-button/profile__edit-button.css);
+@import url(./blocks/button-hover/button-hover.css);
+@import url(./blocks/profile/__about/profile__about.css);
+@import url(./blocks/profile/__add-button/profile__add-button.css);
+
+@import url(./blocks/elements/elements.css);
+@import url(./blocks/card/card.css);
+@import url(./blocks/card/__image/card__image.css);
+@import url(./blocks/card/__info/card__info.css);
+@import url(./blocks/card/__title/card__title.css);
+@import url(./blocks/card/__like/card__like.css);
+@import url(./blocks/card/__like/_active/card__like_active.css);
+@import url(./blocks/card/__like-container/card__like-container.css);
+@import url(./blocks/card/__like-counter/card__like-counter.css);
+@import url(./blocks/card/__remove/card__remove.css);
+
+@import url(./blocks/footer/footer.css);
+@import url(./blocks/footer/__copyright/footer__copyright.css);
+
+@import url(./blocks/popup/popup.css);
+@import url(./blocks/popup/__container/popup__container.css);
+@import url(./blocks/popup/__close-button/popup__close-button.css);
+@import url(./blocks/popup/__title/popup__title.css);
+@import url(./blocks/popup/__form/popup__form.css);
+@import url(./blocks/popup/__form/_delete-place/popup__form_delete-place.css);
+@import url(./blocks/popup/__input/popup__input.css);
+@import url(./blocks/popup/__input-group/popup__input-group.css);
+@import url(./blocks/popup/__submit/popup__submit.css);
+@import url(./blocks/popup/__submit/_delete-place/popup__submit_delete-place.css);
+@import url(./blocks/popup/__input/_invalid/popup__input_invalid.css);
+@import url(./blocks/popup/__submit/_disabled/popup__submit_disabled.css);
+@import url(./blocks/popup/__error/popup__error.css);
+@import url(./blocks/popup/__error/_visible/popup__error_visible.css);
+@import url(./blocks/image-popup/image-popup.css);
+@import url(./blocks/popup/__image-container/popup__image-container.css);
+@import url(./blocks/popup/__image/popup__image.css);
+@import url(./blocks/popup/__image-title/popup__image-title.css);
+@import url(./blocks/popup/_is-opened/popup_is-opened.css);
+@import url(./blocks/popup/__tooltip/popup__tooltip.css);
+@import url(./blocks/popup/__tooltip-image/popup__tooltip-image.css);
+@import url(./blocks/popup/__tooltip-text/popup__tooltip-text.css);
+
+@import url(./blocks/form/form.css);
+@import url(./blocks/form/__body/form__body.css);
+@import url(./blocks/form/__container/form__container.css);
+@import url(./blocks/form/__input/form__input.css);
+@import url(./blocks/form/__login-group/form__login-group.css);
+@import url(./blocks/form/__login-link/form__login-link.css);
+@import url(./blocks/form/__login-text/form__login-text.css);
+@import url(./blocks/form/__submit/form__submit.css);
+@import url(./blocks/form/__title/form__title.css);

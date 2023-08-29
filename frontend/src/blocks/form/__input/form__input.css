@@ -1,0 +1,20 @@
+.form__input {
+    display: block;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    border: none;
+    padding: 0 0 11px;
+    width: 100%;
+    border-bottom: 2px solid #CCCCCC;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    background-color: black;
+    color: #FFFFFF;
+    outline: none;
+}
+
+.form__input:first-of-type {
+    margin-bottom: 30px;
+}

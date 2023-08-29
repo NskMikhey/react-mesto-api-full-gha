@@ -1,0 +1,13 @@
+.header__email {
+    font-weight: 500;
+    line-height: 22px;
+    font-size: 18px;
+    color: #FFFFFF;
+    margin: 0 24px 0 0;
+}
+
+@media screen and (max-width: 767px) {
+    .header__email {
+        margin: 0 0 18px 0;
+    }
+}

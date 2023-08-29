@@ -1,0 +1,18 @@
+.popup__input {
+  padding: 0;
+  font-weight: 400;
+  font-size: 14px;
+  color: #000;
+  padding-bottom: 13px;
+  border: none;
+  border-bottom: 1px solid rgba(0,0,0, .2);
+  outline: none;
+}
+
+.popup__input:-webkit-autofill,
+.popup__input:-webkit-autofill:hover,
+.popup__input:-webkit-autofill:focus,
+.popup__input:-webkit-autofill:active {
+  -webkit-transition: color 9999s ease-out, background-color 9999s ease-out;
+  -webkit-transition-delay: 9999s;
+}

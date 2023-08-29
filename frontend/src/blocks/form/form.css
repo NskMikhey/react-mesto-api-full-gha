@@ -1,0 +1,20 @@
+.form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 60px;
+    height: calc(100% - 120px - 147px - 60px);
+}
+
+@media screen and (max-width: 1023px) {
+    .form {
+        height: calc(100% - 110px - 123px - 60px);
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .form {
+        margin-top: 40px;
+        height: calc(100% - 84px - 100px - 40px);
+    }
+}

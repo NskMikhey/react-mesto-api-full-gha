@@ -1,0 +1,22 @@
+.profile__edit-button {
+  grid-column: 2/-1;
+  grid-row: 1/2;
+  width: 24px;
+  height: 24px;
+  background-image: url(../../../images/editPen.svg);
+  border: 1px solid #fff;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  background-position: center;
+  margin: 0;
+  padding: 0;
+  }
+
+@media screen and (max-width: 767px) {
+  .profile__edit-button {
+    width: 18px;
+    height: 18px;
+    margin-bottom: 8px;
+    margin-left: 8px;
+  }
+}

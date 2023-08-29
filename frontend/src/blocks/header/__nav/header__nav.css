@@ -1,0 +1,15 @@
+.header__nav {
+    display: flex;
+    margin: 0;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@media screen and (max-width: 767px) {
+    .header__nav {
+        flex-direction: column-reverse;
+        align-items: revert;
+        justify-content: revert;
+    }
+}
