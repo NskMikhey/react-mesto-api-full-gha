@@ -2,7 +2,7 @@
  * @type {{headers: {"Content-Type": string}, serverURL: string}}
  */
 export const apiSettings = {
-    serverURL: "http://localhost:3000",
+    serverURL: "http://api.nskmikhey.nomoredomainsicu.ru",
     headers: {
         "Accept": "application/json",
         "Content-Type": "application/json",

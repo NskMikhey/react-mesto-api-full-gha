@@ -1,9 +1,5 @@
 import { apiSettings, SERVER_ERRORS } from "./utils";
 
-/** Хандл проверки ответа при регистрации / авторизации, возвращает ответ или ошибку
- * @param res - ответ
- * @returns {*}
- */
 const handleResponse = (res) => {
     if (res.ok) {
         return res.json();
