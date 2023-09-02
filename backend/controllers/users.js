@@ -5,16 +5,12 @@ const User = require('../models/user');
 const BadRequestError = require('../errors/bad-request-error');
 const UnauthorizedError = require('../errors/unauthorized-error');
 const NotFoundError = require('../errors/not-found-error');
-const DefaultError = require('../errors/default-error');
 const ConflictError = require('../errors/conflict-error');
 
 // GET Получить всех пользователей
 module.exports.getUsers = (req, res, next) => {
   User.find({})
-    .then((users) => res.status(200).send(users))
-    .catch(() => {
-      throw new DefaultError('На сервере произошла ошибка');
-    })
+    .then((users) => res.send(users))
     .catch(next);
 };
 
@@ -57,14 +53,11 @@ module.exports.updateUser = (req, res, next) => {
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {
-        throw new BadRequestError('Переданы некорректные данные при обновлении профиля.');
+        next(new BadRequestError('Переданы некорректные данные при обновлении профиля.'));
+      } else {
+        next(err);
       }
-      if (err.name === 'CastError') {
-        throw new BadRequestError('Переданы некорректные данные вместо _id пользователя.');
-      }
-      throw err;
-    })
-    .catch(next);
+    });
 };
 
 // PATCH / Изменить аватар пользователя
@@ -80,14 +73,11 @@ module.exports.updateUserAvatar = (req, res, next) => {
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {
-        throw new BadRequestError('Переданы некорректные данные при обновлении аватара.');
+        next(new BadRequestError('Переданы некорректные данные при обновлении аватара.'));
+      } else {
+        next(err);
       }
-      if (err.name === 'CastError') {
-        throw new BadRequestError('Переданы некорректные данные вместо _id пользователя.');
-      }
-      throw err;
-    })
-    .catch(next);
+    });
 };
 
 // POST /signup —  Создать пользователя

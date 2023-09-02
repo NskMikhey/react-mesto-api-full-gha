@@ -56,11 +56,13 @@ app.use(auth);
 
 app.use(usersRouter);
 app.use(cardsRouter);
-app.use(errorLogger);
+
 // Любые маршруты, не подходящие под имеющиеся роуты, вызовут статус 404
 app.use('*', (req, res, next) => {
   next(new NotFoundError('Запрашиваемый ресурс не найден.'));
 });
+
+app.use(errorLogger);
 
 // Обработчик ошибок Celebrate
 app.use(errors());

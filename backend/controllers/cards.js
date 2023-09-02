@@ -1,16 +1,13 @@
 const Card = require('../models/card');
 const BadRequestError = require('../errors/bad-request-error');
 const NotFoundError = require('../errors/not-found-error');
-const DefaultError = require('../errors/default-error');
 const ForbiddenError = require('../errors/forbidden-error');
 
 // GET Получить все карточки
 module.exports.getCards = (req, res, next) => {
   Card.find({})
-    .then((cards) => res.status(200).send(cards)) // статус 200, отправляем карточки
-    .catch(() => {
-      next(new DefaultError('Произошла ошибка'));
-    });
+    .then((cards) => res.send(cards))
+    .catch(next);
 };
 
 // POST Создать карточку
@@ -22,11 +19,11 @@ module.exports.createCard = (req, res, next) => {
     .then((card) => res.status(201).send(card))
     .catch((err) => {
       if (err.name === 'ValidationError') {
-        throw new BadRequestError('Переданы некорректные данные при создании карточки.');
+        next(new BadRequestError('Переданы некорректные данные при создании карточки.'));
+      } else {
+        next(err);
       }
-      throw new DefaultError('На сервере произошла ошибка');
-    })
-    .catch(next);
+    });
 };
 
 // DELETE Удалить карточку
@@ -41,12 +38,6 @@ module.exports.deleteCard = (req, res, next) => {
         Card.deleteOne(card)
           .then(() => {
             res.status(200).send({ message: 'Карточка удалена' });
-          })
-          .catch((err) => {
-            if (err.name === 'CastError') {
-              throw new BadRequestError('Передан некорректный _id карточки.');
-            }
-            throw new DefaultError('На сервере произошла ошибка');
           });
       } else {
         throw new ForbiddenError('Вы не являетесь создателем данной карточки');
@@ -66,7 +57,7 @@ module.exports.likeCard = (req, res, next) => {
   Card.findByIdAndUpdate(
     req.params.id,
     { $addToSet: { likes: req.user._id } }, // добавить _id в массив, если его там нет
-    { new: true, runValidators: true },
+    { new: true },
   )
     .orFail(() => {
       next(new NotFoundError('Передан несуществующий _id карточки.'));
@@ -86,7 +77,7 @@ module.exports.dislikeCard = (req, res, next) => {
   Card.findByIdAndUpdate(
     req.params.id,
     { $pull: { likes: req.user._id } }, // убрать _id из массива
-    { new: true, runValidators: true },
+    { new: true },
   )
     .orFail(() => {
       next(new NotFoundError('Передан несуществующий _id карточки.'));
