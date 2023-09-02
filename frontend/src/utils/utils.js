@@ -1,7 +1,7 @@
 // Объект настроек для работы с API
 
 export const apiSettings = {
-    serverURL: "http://localhost:3000",
+    serverURL: "https://api.nskmikhey.nomoredomainsicu.ru",
     headers: {
         "Accept": "application/json",
         "Content-Type": "application/json",
