@@ -3,7 +3,6 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 const BadRequestError = require('../errors/bad-request-error');
-const UnauthorizedError = require('../errors/unauthorized-error');
 const NotFoundError = require('../errors/not-found-error');
 const ConflictError = require('../errors/conflict-error');
 
@@ -119,11 +118,7 @@ module.exports.login = (req, res, next) => {
         NODE_ENV === 'production' ? JWT_SECRET : 'some-secret-key',
         { expiresIn: '7d' },
       );
-      return res.send({ token });
-    })
-    .catch(() => {
-      // ошибка аутентификации
-      next(new UnauthorizedError('Передан неверный логин или пароль.'));
+      res.send({ token });
     })
     .catch(next);
 };
