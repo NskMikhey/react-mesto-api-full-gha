@@ -24,9 +24,9 @@ module.exports.getUser = (req, res, next) => {
     .catch((err) => {
       if (err.name === 'CastError') {
         next(new BadRequestError('Передан некорректный _id пользователя.'));
-      } else {
-        next(err);
+        return;
       }
+      next(err);
     });
 };
 
@@ -54,9 +54,9 @@ module.exports.updateUser = (req, res, next) => {
     .catch((err) => {
       if (err.name === 'ValidationError') {
         next(new BadRequestError('Переданы некорректные данные при обновлении профиля.'));
-      } else {
-        next(err);
+        return;
       }
+      next(err);
     });
 };
 
@@ -74,9 +74,9 @@ module.exports.updateUserAvatar = (req, res, next) => {
     .catch((err) => {
       if (err.name === 'ValidationError') {
         next(new BadRequestError('Переданы некорректные данные при обновлении аватара.'));
-      } else {
-        next(err);
+        return;
       }
+      next(err);
     });
 };
 
@@ -100,18 +100,18 @@ module.exports.createUser = (req, res, next) => {
     .catch((err) => {
       if (err.name === 'ValidationError') {
         next(new BadRequestError('Переданы некорректные данные при создании пользователя.'));
-      } else if (err.code === 11000) {
+        return;
+      } if (err.code === 11000) {
         next(new ConflictError(`Пользователь с адресом электронной почты ${email} уже существует!`));
-      } else {
-        next(err);
+        return;
       }
+      next(err);
     });
 };
 
 // POST /signin аутентификация (вход)
 module.exports.login = (req, res, next) => {
   const { email, password } = req.body;
-
   return User.findUserByCredentials(email, password)
     .then((user) => {
       const token = jwt.sign(
@@ -119,11 +119,11 @@ module.exports.login = (req, res, next) => {
         NODE_ENV === 'production' ? JWT_SECRET : 'some-secret-key',
         { expiresIn: '7d' },
       );
-      res.send({ token });
+      return res.send({ token });
     })
     .catch(() => {
       // ошибка аутентификации
-      throw new UnauthorizedError('Передан неверный логин или пароль.');
+      next(new UnauthorizedError('Передан неверный логин или пароль.'));
     })
     .catch(next);
 };
